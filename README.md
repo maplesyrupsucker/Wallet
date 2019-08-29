@@ -1,3 +1,14 @@
+## Bitcoin.com Wallet with CashShuffle
+This is a functional prototype of CashShuffle working inside the bitcoin.com (older Angular.js based) wallet.  It uses the [cashshufflejs-web](https://github.com/alwaysAn0n/cashshufflejs-web) javascript CashShuffle client as well as [Bitbox SDK](https://github.com/Bitcoin-com/bitbox-sdk) for querying the blockchain and submitting transactions.
+
+The build process described in the original documentation below didn't seem to work for me so I had to build it manually using the official Android tool suite.  The APK is available at https://bchd.sploit.cash/data/bitcoincom-android-debug.apk
+
+**WARNING AND DISCLAIMER**
+This is an experimental feature that is in no way affiliated with bitcoin.com or any of it's products.  This is only a prototype and you should use it at your own risk!
+
+
+## Begin Bitcoin.com Wallet README
+
 The Bitcoin.com wallet is a fork of the Copay Wallet (https://github.com/bitpay/copay).
 
 The Bitcoin.com wallet is a secure bitcoin wallet platform for both desktop and mobile devices. It uses [Bitcore Wallet Service](https://github.com/Bitcoin-com/bitcore-wallet-service) (our fork of the [Bitpay Bitcore Wallet Service](https://github.com/bitpay/bitcore-wallet-service)) (BWS) for peer synchronization and network interfacing.
