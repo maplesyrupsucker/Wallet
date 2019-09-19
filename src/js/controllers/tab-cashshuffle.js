@@ -96,158 +96,158 @@
     };
 
     $scope.getCoins = function(whichCoins) {
-      if (!cashshuffleService) {
-        return [];
-      }
+        if (!cashshuffleService) {
+          return [];
+        }
 
-      let coinsToReturn;
-      switch(whichCoins) {
-        case 'shuffling':
-          coinsToReturn = !cashshuffleService.client ? [] : _.map(cashshuffleService.client.rounds, 'coin');
-        break;
-        case 'unshuffled':
-          // Return all coins that are flagged for shuffle
-          // but are not currently in a CashShuffle pool
-          let currentlyShuffling = _.map(cashshuffleService.client ? cashshuffleService.client.rounds : [], 'coin');
-          coinsToReturn = _.filter(cashshuffleService.coinFactory.coins, (oneCoin) => {
-            return !_.find(currentlyShuffling, { id: oneCoin.id }) && !oneCoin.isDust && (!oneCoin.shuffled || oneCoin.shuffleThisCoin);
-          });
-        break;
-        case 'shuffled':
-          coinsToReturn = _.filter(cashshuffleService.coinFactory.coins, { shuffled: true, shuffleThisCoin: false });
-        break;
-        case 'dust':
-          coinsToReturn = _.filter(cashshuffleService.coinFactory.coins, { isDust: true });
-        break;
-        default:
-        break;
-      }
-      return _.sortByOrder(coinsToReturn, ['shuffleThisCoin', 'amountSatoshis'], [false, false]);
+        let coinsToReturn;
+        switch(whichCoins) {
+          case 'shuffling':
+            coinsToReturn = !cashshuffleService.client ? [] : _.map(cashshuffleService.client.rounds, 'coin');
+          break;
+          case 'unshuffled':
+            // Return all coins that are flagged for shuffle
+            // but are not currently in a CashShuffle pool
+            let currentlyShuffling = _.map(cashshuffleService.client ? cashshuffleService.client.rounds : [], 'coin');
+            coinsToReturn = _.filter(cashshuffleService.coinFactory.coins, (oneCoin) => {
+              return !_.find(currentlyShuffling, { id: oneCoin.id }) && !oneCoin.isDust && (!oneCoin.shuffled || oneCoin.shuffleThisCoin);
+            });
+          break;
+          case 'shuffled':
+            coinsToReturn = _.filter(cashshuffleService.coinFactory.coins, { shuffled: true, shuffleThisCoin: false });
+          break;
+          case 'dust':
+            coinsToReturn = _.filter(cashshuffleService.coinFactory.coins, { isDust: true });
+          break;
+          default:
+          break;
+        }
+        return _.sortByOrder(coinsToReturn, ['shuffleThisCoin', 'amountSatoshis'], [false, false]);
 
     };
 
     window.stuff = {
-      lodash: lodash,
-      walletService: walletService,
-      configService: configService,
-      rateService: rateService,
-      walletHistoryService: walletHistoryService,
-      appConfigService: appConfigService,
-      rootScope: $rootScope,
-      cashshuffleService: cashshuffleService,
-      profileService: profileService,
-      someWallet: profileService.getWallets({ coin: 'bch' })[0],
-      allWallets: profileService.getWallets({ coin: 'bch' }),
-      storageService: storageService,
-      testShuffleLookup: function(txid, vout, depthRemaining) {
+        lodash: lodash,
+        walletService: walletService,
+        configService: configService,
+        rateService: rateService,
+        walletHistoryService: walletHistoryService,
+        appConfigService: appConfigService,
+        rootScope: $rootScope,
+        cashshuffleService: cashshuffleService,
+        profileService: profileService,
+        someWallet: profileService.getWallets({ coin: 'bch' })[0],
+        allWallets: profileService.getWallets({ coin: 'bch' }),
+        storageService: storageService,
+        testShuffleLookup: function(txid, vout, depthRemaining) {
 
-        let outgoingTx = _.find(window.mapping.transactions, {
-          action: 'sent',
-          txid: txid
-        });
+          let outgoingTx = _.find(window.mapping.transactions, {
+            action: 'sent',
+            txid: txid
+          });
 
-        let shuffleInputAddress;
-        if (_.find(window.mapping.addresses, { address: outgoingTx.outputs[vout].address })) {
-          console.log('Yep.  That was it', outgoingTx);
-          shuffleInputAddress = _.reduce(_.map(outgoingTx.inputs, 'address'), function(winner, oneAddress) {
-            if (winner) {
-              return winner;
-            }
-            console.log('Now looking for address:', oneAddress);
+          let shuffleInputAddress;
+          if (_.find(window.mapping.addresses, { address: outgoingTx.outputs[vout].address })) {
+            console.log('Yep.  That was it', outgoingTx);
+            shuffleInputAddress = _.reduce(_.map(outgoingTx.inputs, 'address'), function(winner, oneAddress) {
+              if (winner) {
+                return winner;
+              }
+              console.log('Now looking for address:', oneAddress);
 
-            return _.find(window.mapping.addresses, { address: oneAddress });
-          }, undefined);
-        }
-
-        console.log('We got the input address:', shuffleInputAddress);
-        console.log('So its from wallet named', _.get(shuffleInputAddress, 'inWallet.name'));
-
-        if (shuffleInputAddress.inWallet.isCashShuffleWallet) {
-          console.log('This is from a shuffle wallet so it must be a reshuffle');
-        }
-        else {
-          return shuffleInputAddress;
-        }
-
-      },
-      exposeMapping: function() {
-
-        const getMapping = async function() {
-          const mapping = {
-            transactions: [],
-            addresses: [],
-            wallets: []
-          };
-
-          const getAddressesAndTransactions = function(someWallet) {
-            return new Promise((resolve, reject) => {
-              walletService.getMainAddresses(someWallet, {}, function(err, addresses) {
-                if (err) { return reject(err); }
-                walletHistoryService.getCachedTxHistory(someWallet.id, function(err, transactions) {
-                  if (err) { return reject(err); }
-                  walletService.getBalance(someWallet, {}, function(err, balance){
-                    return resolve({
-                      balance: balance,
-                      addresses: addresses,
-                      transactions: transactions
-                    });
-                  })
-                });
-              });
-            });
-          };
-
-          for (let oneWallet of profileService.getWallets({ coin: 'bch' })) {
-            let results;
-            try {
-              results = await getAddressesAndTransactions(oneWallet);
-            }
-            catch(nope) {
-              console.log(nope);
-              continue;
-            }
-
-            while(results.addresses.length){
-              mapping.addresses.push(_.extend(results.addresses.pop(), {
-                inWallet: oneWallet
-              }));
-            }
-
-            while(results.balance.byAddress && results.balance.byAddress.length){
-              mapping.addresses.push(_.extend(results.balance.byAddress.pop(), {
-                inWallet: oneWallet,
-                isRemote: true
-              }));
-            }
-
-            while(results.transactions.length){
-              mapping.transactions.push(results.transactions.pop());
-            }
-
-            mapping.wallets.push(oneWallet);
-
+              return _.find(window.mapping.addresses, { address: oneAddress });
+            }, undefined);
           }
 
-          return mapping;
-        };
+          console.log('We got the input address:', shuffleInputAddress);
+          console.log('So its from wallet named', _.get(shuffleInputAddress, 'inWallet.name'));
 
-        // I want a function where I input a CashShuffle txid num and it gives me the wallet
-        // from which the closest non-shuffle input came.
+          if (shuffleInputAddress.inWallet.isCashShuffleWallet) {
+            console.log('This is from a shuffle wallet so it must be a reshuffle');
+          }
+          else {
+            return shuffleInputAddress;
+          }
 
-        let cswallet = _.find(profileService.getWallets({ coin: 'bch' }), { disableReceive: true });
-        let oneShuffleCoin = _.find(cashshuffleService.coinFactory.coins, { shuffled: true });
-        console.log('Finding the origin wallet of coin', oneShuffleCoin);
+        },
+        exposeMapping: function() {
 
-        getMapping()
-        .then((mapping) => {
-          console.log('Mapping ready');
-          window._ = lodash;
-          window.oneShuffleCoin = oneShuffleCoin;
-          window.cswallet = cswallet;
-          window.mapping = mapping;
-        });
+          const getMapping = async function() {
+            const mapping = {
+              transactions: [],
+              addresses: [],
+              wallets: []
+            };
 
-      }
+            const getAddressesAndTransactions = function(someWallet) {
+              return new Promise((resolve, reject) => {
+                walletService.getMainAddresses(someWallet, {}, function(err, addresses) {
+                  if (err) { return reject(err); }
+                  walletHistoryService.getCachedTxHistory(someWallet.id, function(err, transactions) {
+                    if (err) { return reject(err); }
+                    walletService.getBalance(someWallet, {}, function(err, balance){
+                      return resolve({
+                        balance: balance,
+                        addresses: addresses,
+                        transactions: transactions
+                      });
+                    })
+                  });
+                });
+              });
+            };
+
+            for (let oneWallet of profileService.getWallets({ coin: 'bch' })) {
+              let results;
+              try {
+                results = await getAddressesAndTransactions(oneWallet);
+              }
+              catch(nope) {
+                console.log(nope);
+                continue;
+              }
+
+              while(results.addresses.length){
+                mapping.addresses.push(_.extend(results.addresses.pop(), {
+                  inWallet: oneWallet
+                }));
+              }
+
+              while(results.balance.byAddress && results.balance.byAddress.length){
+                mapping.addresses.push(_.extend(results.balance.byAddress.pop(), {
+                  inWallet: oneWallet,
+                  isRemote: true
+                }));
+              }
+
+              while(results.transactions.length){
+                mapping.transactions.push(results.transactions.pop());
+              }
+
+              mapping.wallets.push(oneWallet);
+
+            }
+
+            return mapping;
+          };
+
+          // I want a function where I input a CashShuffle txid num and it gives me the wallet
+          // from which the closest non-shuffle input came.
+
+          let cswallet = _.find(profileService.getWallets({ coin: 'bch' }), { disableReceive: true });
+          let oneShuffleCoin = _.find(cashshuffleService.coinFactory.coins, { shuffled: true });
+          console.log('Finding the origin wallet of coin', oneShuffleCoin);
+
+          getMapping()
+          .then((mapping) => {
+            console.log('Mapping ready');
+            window._ = lodash;
+            window.oneShuffleCoin = oneShuffleCoin;
+            window.cswallet = cswallet;
+            window.mapping = mapping;
+          });
+
+        }
     };
 
     let scopeEventListeners = [];
