@@ -6751,7 +6751,8 @@ button.item.item-button-right {
 .card {
   padding-top: 1px;
   padding-bottom: 1px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+  box-shadow: rgb(255, 255, 255) 0px 2px 3px 0px inset, rgba(21, 19, 56, 0.07) 0px 4px 10px 0px, rgba(7, 7, 12, 0.05) 0px 5px 25px 0px;
+  border-radius:7px; }
   .card .item {
     border-left: 0;
     border-right: 0; }
@@ -9888,7 +9889,7 @@ a.button {
   z-index: 10; }
   [nav-bar-transition="ios"] [nav-bar="active"] .bar,
   [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
-    background: transparent; }
+    background: #F9FAFD; }
 
 [nav-bar-transition="ios"] [nav-bar="cached"] {
   display: block; }
@@ -9927,7 +9928,7 @@ a.button {
   z-index: 10; }
   [nav-bar-transition="android"] [nav-bar="active"] .bar,
   [nav-bar-transition="android"] [nav-bar="entering"] .bar {
-    background: transparent; }
+    background: #F9FAFD; }
 
 [nav-bar-transition="android"] [nav-bar="cached"] {
   display: block; }
@@ -10125,6 +10126,7 @@ ion-view.deflash-blue:before, ion-view#view-amount:before, ion-view#view-confirm
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
+  border-radius:3px;
   display: block; }
 
 .button.button-primary,
@@ -10313,10 +10315,11 @@ ion-view.deflash-blue:before, ion-view#view-amount:before, ion-view#view-confirm
   .button-card-style {
     border-radius: 3px; }
     .button-card-style.white {
-      border-color: transparent;
+      border-color: #C7CDD8;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 4px 0px;
       background-color: #FFF;
-      color: #15d6a0;
-      background: white; }
+      color: #13171F;
+      background: rgb(253, 253, 253); }
       .button-card-style.white:hover {
         color: #15d6a0;
         text-decoration: none; }
@@ -10457,12 +10460,14 @@ ion-tabs .tab-title {
   color: #787878; }
 
 #view-add .item {
-  margin-bottom: 10px;
+  box-shadow:rgb(255, 255, 255) 0px 2px 3px 0px inset, rgba(21, 19, 56, 0.07) 0px 4px 10px 0px, rgba(7, 7, 12, 0.05) 0px 5px 25px 0px;
+  margin-bottom: 15px;
   margin-left: 10px;
   margin-right: 10px;
   padding-top: 2rem;
   padding-bottom: 2rem;
   border: none;
+  border-radius:7px;
   padding-left: 90px; }
   #view-add .item:first-child {
     margin-top: 25px; }
@@ -10668,6 +10673,8 @@ ion-tabs .tab-title {
     display: flex;
     flex-direction: column; }
     #view-amount .scroll-content .send-amount {
+      box-shadow:rgb(255, 255, 255) 0px 2px 3px 0px inset, rgba(21, 19, 56, 0.07) 0px 4px 10px 0px, rgba(7, 7, 12, 0.05) 0px 5px 25px 0px;
+      border-radius:7px;
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
@@ -10999,8 +11006,13 @@ ion-tabs .tab-title {
   line-height: 26px;
   padding: 8px 6px; }
   #tab-home #buy-bitcoin .button.button-standard {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
     width: 100%;
-    max-width: 100%; }
+    max-width: 250px; 
+    background-image: url("../img/colors/p3button.png");
+    background-repeat:repeat-x;
+    border-radius:3px;
+  }
 
 #tab-home .icon-create-wallet {
   background-color: #4A90E2; }
@@ -11029,7 +11041,7 @@ ion-tabs .tab-title {
 
 #tab-home .card {
   background: #FFFFFF;
-  box-shadow: 0 3px 30px 0 rgba(105, 105, 105, 0.07);
+  box-shadow: rgb(255, 255, 255) 0px 2px 3px 0px inset, rgba(21, 19, 56, 0.07) 0px 4px 10px 0px, rgba(7, 7, 12, 0.05) 0px 5px 25px 0px;
   border-radius: 7px; }
   #tab-home .card .item {
     color: #131720;
@@ -11083,7 +11095,10 @@ ion-tabs .tab-title {
     min-height: 0;
     line-height: 19px; }
     #tab-home .buttons .button-no-border {
-      border: none; }
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 4px 0px;
+      color:#13171F;
+      padding:16px;
+      border: 1px solid #C7CDD8; }
 
 #tab-home .wallet-coin-logo {
   vertical-align: middle;
@@ -11590,11 +11605,6 @@ ion-tabs .tab-title {
     #tab-spend #travala .subtitle {
       width: 100%; }
 
-#tab-spend #travala {
-  background-image: url("../img/merchants/travala_bg.jpg"); }
-  #tab-spend #travala .subtitle {
-    width: 100%; }
-
 #wallet-origin-destination .header--request {
   padding: 30px 24px;
   width: 100%;
@@ -11871,7 +11881,8 @@ ion-tabs .tab-title {
   color: #283144; }
 
 .cashwallet-color-default {
-  color: #00BD89; }
+  background: url("../img/colors/p3green.png");
+  background-repeat: repeat; }
 
 /* generate classes for all colors */
 .wallet-background-color-0 {
@@ -11934,7 +11945,8 @@ ion-tabs .tab-title {
   background-repeat: repeat; }
 
 .wallet-color-5 {
-  background-color: #00BD89; }
+  background: url("../img/colors/p3green.png");
+  background-repeat: repeat; }
 
 .wallet-color-5:before {
   content: "Shamrock";
@@ -12285,14 +12297,17 @@ ion-tabs .tab-title {
         padding: 5px 10px;
         margin-bottom: 0; }
       #walletDetails .amount-wrapper .send-receive-buttons .button {
-        border: 2px solid;
+        border: 1px solid #C7CDD8;
         border-radius: 3px;
-        padding: 6px 2px 6px 2px;
+        padding: 16px;
         text-align: center;
         width: 100%;
         max-width: 300px;
         font-size: 19px;
+        color:#13171F;
         font-weight: bolder;
+        background: rgb(253, 253, 253);
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 4px 0px;
         min-height: 0;
         line-height: 19px; }
   #walletDetails .amount {
@@ -14006,6 +14021,9 @@ action-sheet .bp-action-sheet__backdrop {
   #buy-bitcoin-document-capture .center-content {
     display: flex;
     justify-content: center; }
+    #buy-bitcoin-document-capture .center-content img {
+      max-height: 15vh;
+      max-width: 400px; }
   #buy-bitcoin-document-capture .capture-frame {
     height: 100%; }
     #buy-bitcoin-document-capture .capture-frame video {
@@ -16002,6 +16020,128 @@ log-options #check-bar .checkbox-icon {
 
 #view-review .warning {
   color: #b7664d; }
+
+#tab-cspreferences .item-toggle {
+  padding-right: 80px; }
+
+#tab-cspreferences .round {
+  border: 0;
+  border-radius: 7px; }
+
+#tab-cspreferences .bold {
+  font-weight: 600; }
+
+#tab-cspreferences .shuffle-server-message {
+  margin: 3px 0px;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0px; }
+
+#tab-cspreferences .progress-message {
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1.4rem; }
+
+#tab-cspreferences .progress-bar-container {
+  background-color: white; }
+
+#tab-cspreferences .progress-bar {
+  width: 100%;
+  background-color: white;
+  padding: 3px;
+  border-radius: 15px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); }
+
+#tab-cspreferences .progress-bar-fill {
+  display: block;
+  height: 22px;
+  background-color: #00bd89;
+  border-radius: 15px;
+  transition: width 500ms ease-in-out; }
+
+#tab-cspreferences .wallet-container {
+  height: auto;
+  }
+  #tab-cspreferences .wallet-container .wallet-details {
+    display: flex;
+    flex-wrap: wrap;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+    min-height: 50%;
+    max-height: 50%; }
+    #tab-cspreferences .wallet-container .wallet-details .radio-container-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: auto; }
+      #tab-cspreferences .wallet-container .wallet-details .radio-container-content .radio-container {
+        background-color: white;
+        width: 35px;
+        height: 35px;
+        max-width: 35px;
+        max-height: 35px; }
+        #tab-cspreferences .wallet-container .wallet-details .radio-container-content .radio-container .radio {
+          position: inherit;
+          width: 100%;
+          height: 100%;
+          border: 1px solid darkgrey;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          #tab-cspreferences .wallet-container .wallet-details .radio-container-content .radio-container .radio .radio-selected {
+            min-width: 100%;
+            min-height: 100%;
+            background-color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            transition: width 500ms ease-in-out; }
+    #tab-cspreferences .wallet-container .wallet-details .wallet-icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 100px;
+      font-size: 1.4rem; }
+      #tab-cspreferences .wallet-container .wallet-details .wallet-icon-container .icon {
+        width: 60px;
+        height: 60px;
+        max-width: 60px;
+        max-height: 60px;
+        border: 10px solid #00bd89;
+        border-radius: 50%;
+        display: flex; }
+        #tab-cspreferences .wallet-container .wallet-details .wallet-icon-container .icon .wallet-icon {
+          width: 40px;
+          height: 40px;
+          background-repeat: no-repeat;
+          background-clip: padding-box;
+          background-size: 103%;
+          -webkit-user-drag: none; }
+    #tab-cspreferences .wallet-container .wallet-details .wallet-info-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 100px;
+      max-width: 225px;
+      margin-left: 20px; }
+      #tab-cspreferences .wallet-container .wallet-details .wallet-info-container .wallet-info .wallet-name {
+        font-size: 16px;
+        font-weight:bolder;
+        margin: 5px 0px; }
+      #tab-cspreferences .wallet-container .wallet-details .wallet-info-container .wallet-info .wallet-balance {
+        font-size: 14px;
+        color:#6B717E; }
+  #tab-cspreferences .wallet-container .wallet-message-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 20%;
+    max-height: 40%; }
+    #tab-cspreferences .wallet-container .wallet-message-container .wallet-message-content .wallet-message {
+      font-size: 14px;
+      color:#6B717E;
+      margin-bottom: 5px; }
 
 .gravatar {
   border-radius: 3px;
