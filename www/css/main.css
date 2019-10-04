@@ -16109,8 +16109,8 @@ log-options #check-bar .checkbox-icon {
         border-radius: 50%;
         display: flex; }
         #tab-cspreferences .wallet-container .wallet-details .wallet-icon-container .icon .wallet-icon {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           background-repeat: no-repeat;
           background-clip: padding-box;
           background-size: 103%;
@@ -16120,14 +16120,15 @@ log-options #check-bar .checkbox-icon {
       justify-content: center;
       align-items: center;
       max-height: 100px;
-      max-width: 225px;
-      margin-left: 20px; }
+      max-width: 215px;
+      margin-left: 10px; }
       #tab-cspreferences .wallet-container .wallet-details .wallet-info-container .wallet-info .wallet-name {
-        font-size: 1.4rem;
+        font-size: 16px;
+        font-weight: bolder;
         margin: 5px 0px; }
       #tab-cspreferences .wallet-container .wallet-details .wallet-info-container .wallet-info .wallet-balance {
-        font-size: 1.3rem;
-        margin: 5px 0px; }
+        font-size: 14px;
+        color: #6B717E; }
   #tab-cspreferences .wallet-container .wallet-message-container {
     display: flex;
     justify-content: left;
@@ -16135,9 +16136,9 @@ log-options #check-bar .checkbox-icon {
     min-height: 20%;
     max-height: 40%; }
     #tab-cspreferences .wallet-container .wallet-message-container .wallet-message-content .wallet-message {
-      font-size: 1rem;
-      margin-left: 20px;
-      margin-bottom: 5px; }
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #6B717E; }
 
 .gravatar {
   border-radius: 3px;
