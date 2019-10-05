@@ -244,6 +244,7 @@ $wallet-details-collapse-transition: all 0.25s ease-in-out;
     align-items: center;
     color: #fff;
     display: block;
+    font-family:"Gilroy-Bold", sans-serif;
 
     height: 230px;
     @media only screen and (max-height:500px) {
@@ -270,6 +271,7 @@ $wallet-details-collapse-transition: all 0.25s ease-in-out;
     &-alternative {
       line-height: 36px;
       transition: $wallet-details-collapse-transition;
+      font-family:"Gilroy-SemiBold", sans-serif;
     }
 
     &__button-balance {

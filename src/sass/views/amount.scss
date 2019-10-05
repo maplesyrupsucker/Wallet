@@ -278,7 +278,7 @@
 
           .primary-amount {
             color: #333;
-            font-weight: bold;
+            font-family:"Gilroy-Bold";
             input, .unit, .primary-amount-display {
               font-size: 1.8em;
 
@@ -333,7 +333,7 @@
               margin: 0;
               height: 1em;
               margin-right: 5px;
-              font-family: 'ProximaNova';
+              font-family: 'Gilroy-Regular';
 
               @media (min-width: 375px) {
               }
@@ -406,7 +406,7 @@
           border: none;
           border-radius: 0;
           color: #000;
-          font-family: 'ProximaNova';
+          font-family: 'Gilroy-Medium';
           font-size: 14px;
           line-height: normal;
           min-height: auto;
