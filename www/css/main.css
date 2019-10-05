@@ -16060,7 +16060,12 @@ log-options #check-bar .checkbox-icon {
 
 #view-review .header {
   background: url("../img/green_px.png");
-  background-repeat: repeat; }
+  background-repeat: repeat;
+  font-family: "Gilroy-Medium", "Roboto", sans-serif; }
+  #view-review .header .large {
+    font-family: "Gilroy-Bold", "Gilroy-Medium", "Roboto", sans-serif, sans-serif;
+    font-size: 36px;
+    font-weight: normal; }
 
 #view-review slide-to-accept, #view-review slide-to-accept-success {
   margin-bottom: constant(safe-area-inset-bottom);
@@ -16096,6 +16101,27 @@ log-options #check-bar .checkbox-icon {
 
 #tab-cspreferences .bold {
   font-weight: 600; }
+
+#tab-cspreferences .cs-button {
+  width: 100%;
+  padding: 5px 15px;
+  text-align: center; }
+
+#tab-cspreferences .button-green {
+  font-family: "Gilroy-Medium", "Roboto", sans-serif;
+  border-color: #11A87E;
+  background-color: #15d6a0;
+  color: #FFF;
+  background: url("../img/p3green.png");
+  background-repeat: repeat-x;
+  border: 1px;
+  border-radius: 3px;
+  width: 250px;
+  padding: 16px;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 700;
+  display: inline-block; }
 
 #tab-cspreferences .shuffle-server-message {
   margin: 3px 0px;
@@ -16281,7 +16307,9 @@ ion-nav-view {
     margin-top: -2px; }
 
 .card.card-gutter-compact {
-  margin: 10px 12px; }
+  margin: 20px 12px;
+  border-radius: 7px;
+  box-shadow: white 0px 2px 3px 0px inset, rgba(21, 19, 56, 0.07) 0px 4px 10px 0px, rgba(7, 7, 12, 0.05) 0px 5px 25px 0px; }
 
 .header {
   padding: 29px 12px 61px;

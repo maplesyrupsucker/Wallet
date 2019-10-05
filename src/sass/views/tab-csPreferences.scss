@@ -20,6 +20,29 @@
         font-weight: 600;
     }
 
+    .cs-button {
+        width:100%;
+        padding:5px 15px;
+        text-align:center;
+    }
+
+      .button-green {
+          font-family:$v-font-family;
+          border-color: #11A87E;
+          background-color: #15d6a0;
+          color: #FFF;
+          background: url("../img/p3green.png");
+          background-repeat: repeat-x;
+          border: 1px; 
+          border-radius:3px;
+          width:250px;
+          padding:16px;
+          text-decoration:none;
+          font-size:19px;
+          font-weight:700;
+          display:inline-block;
+    }
+
     .shuffle-server-message {
       margin: 3px 0px;
       text-align: center;
