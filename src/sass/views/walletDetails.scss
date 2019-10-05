@@ -224,6 +224,8 @@ $wallet-details-collapse-transition: all 0.25s ease-in-out;
         margin-bottom: 0;
       }
       .button {
+        font-family:"Gilroy-SemiBold", sans-serif;
+        font-weight:normal;
         border: 1px solid #C7CDD8;
         border-radius: 3px;
         padding: 16px;
@@ -232,7 +234,6 @@ $wallet-details-collapse-transition: all 0.25s ease-in-out;
         color:#13171F;
         max-width: 300px;
         font-size: 19px;
-        font-weight: bolder;
         min-height: 0;
         line-height: 19px;
         background: rgb(253, 253, 253);
